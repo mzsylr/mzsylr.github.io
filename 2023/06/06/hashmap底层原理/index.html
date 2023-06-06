@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>MZ-sylr的博客</title>
+  <title>HashMap的底层原理 | MZ-sylr的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="hashmap 底层原理Hashmap的结构原理：​	第一，map底层是数组 + 链表&#x2F;红黑树的形式，数组默认大小为16； ​	第二，数组的下标是由 key 的哈希值决定的，哈希值由 hash 算法得到； ​	第三，如果出现两个 key 的哈希值相同，即发生哈希碰撞，此时该位的数据就以链表的形式保存； ​	第四，当某一位的链表长度达到8以上时，就会自动转换为红黑树保存，红黑树提高了查找效">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MZ-sylr的博客">
+<meta property="og:title" content="HashMap的底层原理">
 <meta property="og:url" content="http://example.com/2023/06/06/hashmap%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="MZ-sylr的博客">
 <meta property="og:description" content="hashmap 底层原理Hashmap的结构原理：​	第一，map底层是数组 + 链表&#x2F;红黑树的形式，数组默认大小为16； ​	第二，数组的下标是由 key 的哈希值决定的，哈希值由 hash 算法得到； ​	第三，如果出现两个 key 的哈希值相同，即发生哈希碰撞，此时该位的数据就以链表的形式保存； ​	第四，当某一位的链表长度达到8以上时，就会自动转换为红黑树保存，红黑树提高了查找效">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-06-06T12:28:34.292Z">
-<meta property="article:modified_time" content="2023-06-04T13:21:42.906Z">
+<meta property="article:modified_time" content="2023-06-06T12:34:50.313Z">
 <meta property="article:author" content="Andy Ma">
 <meta property="article:tag" content="后端,spring,springboot,mybatis,redis,开发者,开源,最优性能,myIT网站 gugublog.top">
 <meta name="twitter:card" content="summary">
@@ -158,6 +158,21 @@
             <article id="post-hashmap底层原理" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HashMap的底层原理
+    </h1>
+  
+
+        
+        <a href="/2023/06/06/hashmap%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" class="archive-article-date">
+  	<time datetime="2023-06-06T12:28:34.292Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-06</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="hashmap-底层原理"><a href="#hashmap-底层原理" class="headerlink" title="hashmap 底层原理"></a>hashmap 底层原理</h3><h4 id="Hashmap的结构原理："><a href="#Hashmap的结构原理：" class="headerlink" title="Hashmap的结构原理："></a>Hashmap的结构原理：</h4><p>​	第一，map底层是数组 + 链表&#x2F;红黑树的形式，数组默认大小为16；</p>
@@ -296,14 +311,14 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          Security 登录鉴权与 JWT-token
         
       </div>
     </a>
   
   
     <a href="/2023/06/06/%E8%AE%A2%E9%98%85-%E5%8F%91%E5%B8%83-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">观察者模式的设计</div>
       <i class="icon-circle-right"></i>
     </a>
   
