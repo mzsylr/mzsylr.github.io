@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>我的计算机网络 | MZ-sylr的博客</title>
+  <title>MZ-sylr的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="计网是很有意思的课程，有利于我建立一个互联网的架构，我个人学习的体会是一开始可以看别人的笔记，但最后还是要自己凭理解，不去看任何东西，从头到尾梳理一遍，脑海里要有一个架构，那才叫真的理解、记住了。 OSI与TCP&#x2F;IP网络分层OSI七层模型OSI七层模型中每一层的功能分割的很清晰，并且每一层都需要下一层提供功能。目前非主流模型，在这里不多赘述。 TCP&#x2F;IP四层模型TCP&amp;#x">
+  <meta name="description" content="假设B站用户就是观察者，B站up主是被观察者，有多个的B站用户关注了青春湖北这个up主，当这个up主更新视频时就会通知这些关注的B站用户。 基本流程：观察者为用户，通知方为up主。观察者中定义用户名和接收消息的方法。通知方中定义添加用户的方法、发布消息的方法、保存用户的 List 。 源码位置： D:\java\LeetCode\CoreCode\src\AMyRealProgram\Publis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的计算机网络">
-<meta property="og:url" content="http://example.com/2023/05/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
+<meta property="og:title" content="MZ-sylr的博客">
+<meta property="og:url" content="http://example.com/2023/06/06/%E8%AE%A2%E9%98%85-%E5%8F%91%E5%B8%83-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="MZ-sylr的博客">
-<meta property="og:description" content="计网是很有意思的课程，有利于我建立一个互联网的架构，我个人学习的体会是一开始可以看别人的笔记，但最后还是要自己凭理解，不去看任何东西，从头到尾梳理一遍，脑海里要有一个架构，那才叫真的理解、记住了。 OSI与TCP&#x2F;IP网络分层OSI七层模型OSI七层模型中每一层的功能分割的很清晰，并且每一层都需要下一层提供功能。目前非主流模型，在这里不多赘述。 TCP&#x2F;IP四层模型TCP&amp;#x">
+<meta property="og:description" content="假设B站用户就是观察者，B站up主是被观察者，有多个的B站用户关注了青春湖北这个up主，当这个up主更新视频时就会通知这些关注的B站用户。 基本流程：观察者为用户，通知方为up主。观察者中定义用户名和接收消息的方法。通知方中定义添加用户的方法、发布消息的方法、保存用户的 List 。 源码位置： D:\java\LeetCode\CoreCode\src\AMyRealProgram\Publis">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-05-06T13:21:40.989Z">
-<meta property="article:modified_time" content="2023-05-08T06:47:02.385Z">
+<meta property="article:published_time" content="2023-06-06T12:28:34.163Z">
+<meta property="article:modified_time" content="2023-06-05T07:59:43.686Z">
 <meta property="article:author" content="Andy Ma">
 <meta property="article:tag" content="后端,spring,springboot,mybatis,redis,开发者,开源,最优性能,myIT网站 gugublog.top">
 <meta name="twitter:card" content="summary">
@@ -155,48 +155,15 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-计算机网络" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-订阅-发布-观察者模式设计" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      我的计算机网络
-    </h1>
-  
-
-        
-        <a href="/2023/05/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="archive-article-date">
-  	<time datetime="2023-05-06T13:21:40.989Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-06</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>计网是很有意思的课程，有利于我建立一个互联网的架构，我个人学习的体会是一开始可以看别人的笔记，但最后还是要自己凭理解，不去看任何东西，从头到尾梳理一遍，脑海里要有一个架构，那才叫真的理解、记住了。</p>
-<h1 id="OSI与TCP-x2F-IP网络分层"><a href="#OSI与TCP-x2F-IP网络分层" class="headerlink" title="OSI与TCP&#x2F;IP网络分层"></a>OSI与TCP&#x2F;IP网络分层</h1><h2 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h2><p>OSI七层模型中每一层的功能分割的很清晰，并且每一层都需要下一层提供功能。目前非主流模型，在这里不多赘述。</p>
-<h2 id="TCP-x2F-IP四层模型"><a href="#TCP-x2F-IP四层模型" class="headerlink" title="TCP&#x2F;IP四层模型"></a>TCP&#x2F;IP四层模型</h2><p>TCP&#x2F;IP四层模型将计算机网络依次分为应用层、传输层、网络层、网络接口层。</p>
-<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>应用层中提供不同终端中应用程序之间的通信服务，本质上也是进程之间的通信，但是不同终端中的进程间通信。我们知道操作系统中进程间通信的方式有很多，对于不同终端之间的进程通信需要利用socket套接字。应用层中的协议会定义信息交换的格式，并由传输层来传递消息。</p>
-<h4 id="TCP-和-UDP"><a href="#TCP-和-UDP" class="headerlink" title="TCP 和 UDP"></a>TCP 和 UDP</h4><p>为什么要在这里说TCP和UDP的区别呢？因为应用层协议都是基于传输层协议的特点构建的。后面会详细的介绍，这里主要说一下TCP和UDP应用差别。一言以蔽之，TCP用于对传输准确性要求高的场景，比如文件传输、邮件发送与接收、远程登录等等。UDP用于实时通信，要求通信速度要快，对准确性的要求比较低，比如语音、视频、直播等等。</p>
-<h4 id="基于TCP协议"><a href="#基于TCP协议" class="headerlink" title="基于TCP协议"></a>基于TCP协议</h4><p>HTTP协议：超文本传输协议。顾名思义，这是实习web浏览器和web服务端之间通信的协议。发送HTTP请求之前要建立TCP连接，即三次握手。从而保证请求的准确性。在1.1版本中，默认开启了Keep-Alive，保证了多次连接复用。</p>
-<p>Telnet协议： 远程登录协议，用于通过一个终端登陆到其他服务器。Telnet 协议的最大缺点之一是所有数据（包括用户名和密码）均以明文形式发送，这有潜在的安全风险。</p>
-<p>SSH协议: 安全的远程登录，与Telnet协议的区别就是，通过加密和认证机制实现安全的访问和文件传输。</p>
-<p>SMTP：邮件发送协议。</p>
-<p>POP3&#x2F;IMAP：邮件接收协议，IMAP 协议在功能和性能上都更加强大。</p>
-<p>FTP：文件传输协议，用于计算机系统间的文件传输，可以屏蔽操作系统和文件存储方式。建立两条TCP连接，分别传输控制命令和数据信息。</p>
-<h4 id="基于UDP协议"><a href="#基于UDP协议" class="headerlink" title="基于UDP协议"></a>基于UDP协议</h4><p>RTP协议：实时通信协议，也支持TCP协议。提供了端到端的实时传输数据的功能，但不包含资源预留存、不保证实时传输质量，这些功能由WebRTC实现。RTP协议传输实时数据信息，RTCP协议提供传输过程中的状态信息。</p>
-<p>DNS协议: 域名管理系统，用于解决域名和IP地址的映射问题。</p>
-<h4 id="直播应用中的流协议"><a href="#直播应用中的流协议" class="headerlink" title="直播应用中的流协议"></a>直播应用中的流协议</h4><p>RTMP：实时消息传输协议，流媒体传输协议，主要是对CDN（内容分发网络）的支持良好。</p>
-<p>HTTP-FLV：实时消息传输协议，流媒体传输协议，打开速度更快，手机浏览器上的支持有限，手机APP直播优秀。</p>
-<p>HLS：苹果推出的解决方案，分片传输，流畅性更强，但延时较大，在手机浏览器上的视频播放表现比较好。</p>
-<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>传输层主要功能就是为不同终端中的进程间通信提供数据传输服务。</p>
-<h4 id="TCP协议：传输控制协议。面向连接的可靠数据传输。"><a href="#TCP协议：传输控制协议。面向连接的可靠数据传输。" class="headerlink" title="TCP协议：传输控制协议。面向连接的可靠数据传输。"></a>TCP协议：传输控制协议。面向连接的可靠数据传输。</h4><p>1.需要通过三次握手建立可靠的连接。三次握手的流程为：① 客户端发起请求，发送SYN数据包，随后进入SYN_SEND状态；② 服务端收到请求后返回SYN+ASK数据包，随后进入SYN_RECV状态；③ 客户端收到后返回ASK数据包，完成握手，都进入就绪状态。 一次SYN + ASK代表着单向的连接建立成功。比如，客户端发送SYN，服务端返回ASK，都满足之后才建立客户端到服务端的连接。</p>
-<p>2.数据传输后需要通过四次挥手断开连接。四次挥手的流程为：① 客户端发起请求，发送FIN数据包；② 服务端收到后，返回ASK数据包，①②过程代表着断开客户端到服务端的连接；③ 服务端发送FIN数据包；④ 客户端收到后，返回ASK数据包， ③④过程代表着断开服务端到客户端的连接。</p>
-<p>3.TCP传输中会记录发送消息的状态，需要维护一个复杂的状态表。</p>
-<p>4.TCP传输形式为字节流，且效率相比UDP较低，传输消息的首部开销为20~60字节。</p>
-<h4 id="UDP协议：用户数据协议。无连接的实时高效的数据传输。"><a href="#UDP协议：用户数据协议。无连接的实时高效的数据传输。" class="headerlink" title="UDP协议：用户数据协议。无连接的实时高效的数据传输。"></a>UDP协议：用户数据协议。无连接的实时高效的数据传输。</h4><p>1.UDP协议</p>
+        <p>假设B站用户就是观察者，B站up主是被观察者，有多个的B站用户关注了青春湖北这个up主，当这个up主更新视频时就会通知这些关注的B站用户。</p>
+<p>基本流程：观察者为用户，通知方为up主。观察者中定义用户名和接收消息的方法。通知方中定义添加用户的方法、发布消息的方法、保存用户的 List 。</p>
+<p>源码位置：</p>
+<p>D:\java\LeetCode\CoreCode\src\AMyRealProgram\PublishSubscribeModel</p>
 
       
 
@@ -276,7 +243,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/05/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/06/06/%E8%AE%A2%E9%98%85-%E5%8F%91%E5%B8%83-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -290,7 +257,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/06/06/socket%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/06/06/hashmap%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -300,8 +267,8 @@
     </a>
   
   
-    <a href="/2023/04/30/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2023/06/06/web%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%AD%E9%97%B4%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
   

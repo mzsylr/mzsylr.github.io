@@ -155,49 +155,12 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-计算机网络" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-词频统计-map排序与遍历" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/05/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">我的计算机网络</a>
-    </h1>
-  
-
-        
-        <a href="/2023/05/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="archive-article-date">
-  	<time datetime="2023-05-06T13:21:40.989Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-06</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>计网是很有意思的课程，有利于我建立一个互联网的架构，我个人学习的体会是一开始可以看别人的笔记，但最后还是要自己凭理解，不去看任何东西，从头到尾梳理一遍，脑海里要有一个架构，那才叫真的理解、记住了。</p>
-<h1 id="OSI与TCP-x2F-IP网络分层"><a href="#OSI与TCP-x2F-IP网络分层" class="headerlink" title="OSI与TCP&#x2F;IP网络分层"></a>OSI与TCP&#x2F;IP网络分层</h1><h2 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h2><p>OSI七层模型中每一层的功能分割的很清晰，并且每一层都需要下一层提供功能。目前非主流模型，在这里不多赘述。</p>
-<h2 id="TCP-x2F-IP四层模型"><a href="#TCP-x2F-IP四层模型" class="headerlink" title="TCP&#x2F;IP四层模型"></a>TCP&#x2F;IP四层模型</h2><p>TCP&#x2F;IP四层模型将计算机网络依次分为应用层、传输层、网络层、网络接口层。</p>
-<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>应用层中提供不同终端中应用程序之间的通信服务，本质上也是进程之间的通信，但是不同终端中的进程间通信。我们知道操作系统中进程间通信的方式有很多，对于不同终端之间的进程通信需要利用socket套接字。应用层中的协议会定义信息交换的格式，并由传输层来传递消息。</p>
-<h4 id="TCP-和-UDP"><a href="#TCP-和-UDP" class="headerlink" title="TCP 和 UDP"></a>TCP 和 UDP</h4><p>为什么要在这里说TCP和UDP的区别呢？因为应用层协议都是基于传输层协议的特点构建的。后面会详细的介绍，这里主要说一下TCP和UDP应用差别。一言以蔽之，TCP用于对传输准确性要求高的场景，比如文件传输、邮件发送与接收、远程登录等等。UDP用于实时通信，要求通信速度要快，对准确性的要求比较低，比如语音、视频、直播等等。</p>
-<h4 id="基于TCP协议"><a href="#基于TCP协议" class="headerlink" title="基于TCP协议"></a>基于TCP协议</h4><p>HTTP协议：超文本传输协议。顾名思义，这是实习web浏览器和web服务端之间通信的协议。发送HTTP请求之前要建立TCP连接，即三次握手。从而保证请求的准确性。在1.1版本中，默认开启了Keep-Alive，保证了多次连接复用。</p>
-<p>Telnet协议： 远程登录协议，用于通过一个终端登陆到其他服务器。Telnet 协议的最大缺点之一是所有数据（包括用户名和密码）均以明文形式发送，这有潜在的安全风险。</p>
-<p>SSH协议: 安全的远程登录，与Telnet协议的区别就是，通过加密和认证机制实现安全的访问和文件传输。</p>
-<p>SMTP：邮件发送协议。</p>
-<p>POP3&#x2F;IMAP：邮件接收协议，IMAP 协议在功能和性能上都更加强大。</p>
-<p>FTP：文件传输协议，用于计算机系统间的文件传输，可以屏蔽操作系统和文件存储方式。建立两条TCP连接，分别传输控制命令和数据信息。</p>
-<h4 id="基于UDP协议"><a href="#基于UDP协议" class="headerlink" title="基于UDP协议"></a>基于UDP协议</h4><p>RTP协议：实时通信协议，也支持TCP协议。提供了端到端的实时传输数据的功能，但不包含资源预留存、不保证实时传输质量，这些功能由WebRTC实现。RTP协议传输实时数据信息，RTCP协议提供传输过程中的状态信息。</p>
-<p>DNS协议: 域名管理系统，用于解决域名和IP地址的映射问题。</p>
-<h4 id="直播应用中的流协议"><a href="#直播应用中的流协议" class="headerlink" title="直播应用中的流协议"></a>直播应用中的流协议</h4><p>RTMP：实时消息传输协议，流媒体传输协议，主要是对CDN（内容分发网络）的支持良好。</p>
-<p>HTTP-FLV：实时消息传输协议，流媒体传输协议，打开速度更快，手机浏览器上的支持有限，手机APP直播优秀。</p>
-<p>HLS：苹果推出的解决方案，分片传输，流畅性更强，但延时较大，在手机浏览器上的视频播放表现比较好。</p>
-<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>传输层主要功能就是为不同终端中的进程间通信提供数据传输服务。</p>
-<h4 id="TCP协议：传输控制协议。面向连接的可靠数据传输。"><a href="#TCP协议：传输控制协议。面向连接的可靠数据传输。" class="headerlink" title="TCP协议：传输控制协议。面向连接的可靠数据传输。"></a>TCP协议：传输控制协议。面向连接的可靠数据传输。</h4><p>1.需要通过三次握手建立可靠的连接。三次握手的流程为：① 客户端发起请求，发送SYN数据包，随后进入SYN_SEND状态；② 服务端收到请求后返回SYN+ASK数据包，随后进入SYN_RECV状态；③ 客户端收到后返回ASK数据包，完成握手，都进入就绪状态。 一次SYN + ASK代表着单向的连接建立成功。比如，客户端发送SYN，服务端返回ASK，都满足之后才建立客户端到服务端的连接。</p>
-<p>2.数据传输后需要通过四次挥手断开连接。四次挥手的流程为：① 客户端发起请求，发送FIN数据包；② 服务端收到后，返回ASK数据包，①②过程代表着断开客户端到服务端的连接；③ 服务端发送FIN数据包；④ 客户端收到后，返回ASK数据包， ③④过程代表着断开服务端到客户端的连接。</p>
-<p>3.TCP传输中会记录发送消息的状态，需要维护一个复杂的状态表。</p>
-<p>4.TCP传输形式为字节流，且效率相比UDP较低，传输消息的首部开销为20~60字节。</p>
-<h4 id="UDP协议：用户数据协议。无连接的实时高效的数据传输。"><a href="#UDP协议：用户数据协议。无连接的实时高效的数据传输。" class="headerlink" title="UDP协议：用户数据协议。无连接的实时高效的数据传输。"></a>UDP协议：用户数据协议。无连接的实时高效的数据传输。</h4><p>1.UDP协议</p>
-
+        
       
 
       
@@ -209,7 +172,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/05/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/06/06/%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1-map%E6%8E%92%E5%BA%8F%E4%B8%8E%E9%81%8D%E5%8E%86/">展开全文 >></a>
         </p>
       
 
@@ -239,40 +202,12 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-多线程买票-同步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/30/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2023/04/30/hello-world/" class="archive-article-date">
-  	<time datetime="2023-04-30T10:24:57.624Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-30</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+        
       
 
       
@@ -284,7 +219,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/30/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/06/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B9%B0%E7%A5%A8-%E5%90%8C%E6%AD%A5/">展开全文 >></a>
         </p>
       
 
@@ -314,6 +249,509 @@
 
 
   
+    <article id="post-Security登录鉴权和JWT-token" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/06/06/Security%E7%99%BB%E5%BD%95%E9%89%B4%E6%9D%83%E5%92%8CJWT-token/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-hashmap底层原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="hashmap-底层原理"><a href="#hashmap-底层原理" class="headerlink" title="hashmap 底层原理"></a>hashmap 底层原理</h3><h4 id="Hashmap的结构原理："><a href="#Hashmap的结构原理：" class="headerlink" title="Hashmap的结构原理："></a>Hashmap的结构原理：</h4><p>​	第一，map底层是数组 + 链表&#x2F;红黑树的形式，数组默认大小为16；</p>
+<p>​	第二，数组的下标是由 key 的哈希值决定的，哈希值由 hash 算法得到；</p>
+<p>​	第三，如果出现两个 key 的哈希值相同，即发生哈希碰撞，此时该位的数据就以链表的形式保存；</p>
+<p>​	第四，当某一位的链表长度达到8以上时，就会自动转换为红黑树保存，红黑树提高了查找效率。</p>
+<h5 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h5><p>这里插一个红黑树的特点，本质上是一种二叉搜索树，并且保证了根到叶子的最长路径 &lt;&#x3D; 最短路径的两倍，相对平衡但不绝对平衡，对比平衡二叉树查找效率慢一些，但是插入效率更高，因为自旋不超过3次。</p>
+<h4 id="map-get-的底层过程："><a href="#map-get-的底层过程：" class="headerlink" title="map.get() 的底层过程："></a>map.get() 的底层过程：</h4><ol>
+<li><p>调用 get 方法，传入key。</p>
+</li>
+<li><p>get方法内部会调用 getNode 的方法，包含两个参数，key 和 key 的hash值。</p>
+</li>
+<li><p>通过key的hash值找到该key映射到的桶，即底层数组下标。</p>
+</li>
+<li><p>① 如果该桶上首个元素 first 的 key 就是要查找的 key，即直接命中，则直接返回</p>
+<p>② 如果该桶上的首个元素 first的key不是要查找的key，则需要查看后续节点：</p>
+<p>（1）. 如果first属于树节点，则该桶位已经升级成了红黑树，将从红黑树中找我们需要的key</p>
+<p>（2）.否则，后续节点就是链表形式，通过遍历链表来寻找该key</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> V <span class="title function_">get</span><span class="params">(Object key)</span> &#123;</span><br><span class="line">    Node&lt;K,V&gt; e;	<span class="comment">// 哈希表是由一个个Node组成的</span></span><br><span class="line">    <span class="keyword">return</span> (e = getNode(hash(key), key)) == <span class="literal">null</span> ? <span class="literal">null</span> : e.value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> Node&lt;K,V&gt; <span class="title function_">getNode</span><span class="params">(<span class="type">int</span> hash, Object key)</span> &#123;</span><br><span class="line">    <span class="comment">//tab：引用当前hashMap的散列表</span></span><br><span class="line">    <span class="comment">//first：桶位中的头元素</span></span><br><span class="line">    <span class="comment">//e：临时node元素</span></span><br><span class="line">    <span class="comment">//n：table数组长度</span></span><br><span class="line">    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; <span class="type">int</span> n; K k;</span><br><span class="line">    <span class="keyword">if</span> ((tab = table) != <span class="literal">null</span> &amp;&amp; (n = tab.length) &gt; <span class="number">0</span> &amp;&amp;</span><br><span class="line">            (first = tab[(n - <span class="number">1</span>) &amp; hash]) != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">//第一种情况：定位出来的桶位元素 即为咱们要get的数据</span></span><br><span class="line">        <span class="keyword">if</span> (first.hash == hash &amp;&amp; <span class="comment">// always check first node</span></span><br><span class="line">                ((k = first.key) == key || (key != <span class="literal">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">            <span class="keyword">return</span> first;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//说明当前桶位不止一个元素，可能 是链表 也可能是 红黑树</span></span><br><span class="line">        <span class="keyword">if</span> ((e = first.next) != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">//第二种情况：桶位升级成了 红黑树</span></span><br><span class="line">            <span class="keyword">if</span> (first <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                <span class="keyword">return</span> ((TreeNode&lt;K,V&gt;)first).getTreeNode(hash, key);</span><br><span class="line">            <span class="comment">//第三种情况：桶位形成链表</span></span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                        ((k = e.key) == key || (key != <span class="literal">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                    <span class="keyword">return</span> e;</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">while</span> ((e = e.next) != <span class="literal">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="map-put-的底层过程："><a href="#map-put-的底层过程：" class="headerlink" title="map.put() 的底层过程："></a>map.put() 的底层过程：</h4><ol>
+<li><p>put() 方法传入 key、value；</p>
+</li>
+<li><p>put 内部会调用 putValue() 方法，会计算 key 的哈希值，传入 key、key的hash值、value；</p>
+</li>
+<li><p>通过hash值确定桶的位置，即数组的下标，如果该桶没有元素，无hash冲突，直接插入key 和 value 元素；</p>
+</li>
+<li><p>如果出现了hash冲突，则要判断：</p>
+<p>(1) 如果 key 、 key 的哈希值都相同，则直接替换 value；</p>
+<p>(2)  如果该桶使用红黑树处理 hash 冲突，则调用红黑树的方法插入；</p>
+<p>(3)  如果使用链表的方式插入；如果链表的 size &gt;&#x3D; 8，并且 map 的总数据量 &gt; 64 ，则将链表转为红黑树；</p>
+</li>
+<li><p>如果桶的位数超过扩容阈值，或某一链表size &gt; 8，总数 &lt; 64，则先插入，再扩容；</p>
+</li>
+</ol>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> V <span class="title function_">put</span><span class="params">(K key, V value)</span> &#123;</span><br><span class="line">     <span class="keyword">return</span> putVal(hash(key), key, value, <span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">final</span> V <span class="title function_">putVal</span><span class="params">(<span class="type">int</span> hash, K key, V value, <span class="type">boolean</span> onlyIfAbsent,</span></span><br><span class="line"><span class="params">               <span class="type">boolean</span> evict)</span> &#123;</span><br><span class="line">    <span class="comment">//tab：引用当前hashMap的散列表</span></span><br><span class="line">    <span class="comment">//p：表示当前散列表的元素</span></span><br><span class="line">    <span class="comment">//n：表示散列表数组的长度</span></span><br><span class="line">    <span class="comment">//i：表示路由寻址结果（计算出应该放在哈希表的哪个位置）</span></span><br><span class="line">    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; <span class="type">int</span> n, i;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//延迟初始化逻辑，第一次调用putVal时会初始化hashMap对象中的最耗费内存的散列表</span></span><br><span class="line">    <span class="comment">//实际中，如果只创建了HashMap对象但不用，就不会那么耗内存了，只有添加数据的时候才会创建出散列表</span></span><br><span class="line">    <span class="comment">//table是哈希表</span></span><br><span class="line">    <span class="keyword">if</span> ((tab = table) == <span class="literal">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">        n = (tab = resize()).length;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//最简单的一种情况：寻址找到的桶位 刚好是 null，这个时候，直接将当前k-v=&gt;node 扔进去就可以了</span></span><br><span class="line">    <span class="comment">//(n - 1) &amp; hash 是路由算法 ，也即  (table.length - 1) &amp; hash，计算该key应该存放在哈希表的哪个位置</span></span><br><span class="line">    <span class="comment">// 根据键值key计算hash值得到可以插入的数组索引i，判断 tab[i] 是否为null</span></span><br><span class="line">    <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="literal">null</span>)</span><br><span class="line">        <span class="comment">// tab[i] 为null，表示哈希表的索引i位置没有元素，直接插入</span></span><br><span class="line">        tab[i] = newNode(hash, key, value, <span class="literal">null</span>);</span><br><span class="line">    <span class="keyword">else</span> &#123;  <span class="comment">// 走这里，代表tab[i] 不为null</span></span><br><span class="line">        <span class="comment">//e：不为null的话，找到了一个与当前要插入的key-value一致的key的元素</span></span><br><span class="line">        <span class="comment">//k：表示临时的一个key</span></span><br><span class="line">        Node&lt;K,V&gt; e; K k;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//表示桶位中的该元素，与你当前插入的元素的key完全一致，表示后续需要进行替换操作</span></span><br><span class="line">        <span class="comment">// p 是tab[i] ，也就是判断当前插入的元素的key和p的key是否完全一致</span></span><br><span class="line">        <span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">                ((k = p.key) == key || (key != <span class="literal">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">            <span class="comment">// 完全一致，把p的引用复制给临时元素 e</span></span><br><span class="line">            e = p;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// p 是否是红黑树的节点</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)<span class="comment">//红黑树，下期讲。进QQ群:865-373-238</span></span><br><span class="line">            e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="built_in">this</span>, tab, hash, key, value);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 链表的情况，而且链表的头元素与我们要插入的key不一致。（如果一致的话，在第一次判断的时候就找到了）</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">binCount</span> <span class="operator">=</span> <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">                <span class="comment">//条件成立的话，说明迭代到最后一个元素了，也没找到一个与你要插入的key一致的node</span></span><br><span class="line">                <span class="comment">//说明需要加入到当前链表的末尾仍然没有找到与当前要插入的一致的元素，就在尾部插入    尾插  jdk1.7是头插</span></span><br><span class="line">                <span class="keyword">if</span> ((e = p.next) == <span class="literal">null</span>) &#123;</span><br><span class="line">                    p.next = newNode(hash, key, value, <span class="literal">null</span>);</span><br><span class="line">                    <span class="comment">//条件成立的话，说明当前链表的长度，达到树化标准了，需要进行树化</span></span><br><span class="line">                    <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">                        <span class="comment">//树化操作</span></span><br><span class="line">                        treeifyBin(tab, hash);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//条件成立的话，说明在链表中找到了相同key的node元素，需要进行替换操作</span></span><br><span class="line">                <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                        ((k = e.key) == key || (key != <span class="literal">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                p = e;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//e不等于null，条件成立说明，找到了一个与你插入元素key完全一致的数据，需要进行替换</span></span><br><span class="line">        <span class="keyword">if</span> (e != <span class="literal">null</span>) &#123; <span class="comment">// existing mapping for key</span></span><br><span class="line">            <span class="type">V</span> <span class="variable">oldValue</span> <span class="operator">=</span> e.value;</span><br><span class="line">            <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="literal">null</span>)</span><br><span class="line">                e.value = value;</span><br><span class="line">            afterNodeAccess(e);</span><br><span class="line">            <span class="keyword">return</span> oldValue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//modCount：表示散列表结构被修改的次数，替换Node元素的value不计数</span></span><br><span class="line">    ++modCount;</span><br><span class="line">    <span class="comment">//插入新元素，size自增，如果自增后的值大于扩容阈值，则触发扩容。</span></span><br><span class="line">    <span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">        resize();</span><br><span class="line">    afterNodeInsertion(evict);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="扩容机制原理"><a href="#扩容机制原理" class="headerlink" title="扩容机制原理"></a>扩容机制原理</h4><p>当hashmap中的元素个数超过数组大小 * loadFactor时，就会进行数组扩容。loadFactor的默认值为0.75，默认情况下，数组大小为16，那么当hashmap中元素个数超过 16 * 0.75&#x3D;12 的时候，就把数组的大小扩展为 32，即扩大一倍，然后重新计算每个元素在数组中的位置。</p>
+<p>扩容后重新计算每个元素的位置是一个非常消耗性能的操作，所以如果已经预知 hashmap 中元素的个数 num，那么预设元素的个数能够有效的提高 hashmap 的性能，设置的大小最好是 loadFactor * size &gt; num。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/06/06/hashmap%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-订阅-发布-观察者模式设计" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>假设B站用户就是观察者，B站up主是被观察者，有多个的B站用户关注了青春湖北这个up主，当这个up主更新视频时就会通知这些关注的B站用户。</p>
+<p>基本流程：观察者为用户，通知方为up主。观察者中定义用户名和接收消息的方法。通知方中定义添加用户的方法、发布消息的方法、保存用户的 List 。</p>
+<p>源码位置：</p>
+<p>D:\java\LeetCode\CoreCode\src\AMyRealProgram\PublishSubscribeModel</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/06/06/%E8%AE%A2%E9%98%85-%E5%8F%91%E5%B8%83-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-web微服务中间件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>nacos</li>
+</ol>
+<p>   注册中心，微服务上下线动态感知， ribbon 拦截</p>
+<ol start="2">
+<li><p>openfegin </p>
+<p>@feginclient 注解远程调用接口。 原理：基于动态代理实现，代理类拼接服务名和url链接，再借助ribbon实现服务调用。</p>
+</li>
+<li><p>sentinel </p>
+<p>① 降级功能。如果 feginclient 远程调用的服务失败的话，就降级实现 fallback 调用。sentinel会给feginclient的远程调用方法上加一个 try-catch ，在catch 中自动调用fallback 的降级方法。</p>
+<p>② 限流功能，基于滑动时间窗算法。使用时，在sentinel控制台配置流控就可以。滑动时间窗算法原理：拦截所有调用请求，记录请求数和报错数。维护一个时间上的数组，第1 s、第2 s…. 等。然后保存每秒的请求数和保错数，随后跟配置值对比，小于配置值就放行请求。</p>
+<p>③ 熔断。一个服务调用其他服务时，如果发起调用会保错出异常，则直接实现熔断处理，调用其他功能。使用时，在sentinel控制台配置降级规则，熔断策略就可以。</p>
+</li>
+<li><p>seata 存在降低高并发能力的问题，基于两阶段提交。</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/06/06/web%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%AD%E9%97%B4%E4%BB%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-web安全漏洞总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h4><p> 描述：web 应用对用户输入的数据合法性判断不严，导致攻击者可以在原来的查询语句上添加额外的 SQL 语句，从而对数据库进行非法访问，获取超越权限的数据。</p>
+<p>防范措施：</p>
+<ol>
+<li>严格限制web应用的数据库的操作权限。</li>
+<li>对进入数据的特殊字符（‘ “ \ &lt;&gt; &amp; *）进行转义处理，因为sql中会将<code>#</code>及<code>–</code>当作字符串处理。</li>
+<li>不要直接拼接 SQL 语句，采用数据库提供的参数化接口。</li>
+<li>避免网站打印SQL错误信息，对返回的数据和异常做统一处理。</li>
+</ol>
+<h4 id="越权访问"><a href="#越权访问" class="headerlink" title="越权访问"></a>越权访问</h4><p>描述：攻击者在获得低权限用户账户后，利用一些方式绕过权限检查，访问或者操作其他用户或者更高权限。</p>
+<p>防范措施：</p>
+<ol>
+<li>前后端同时对用户输入信息进行校验，双重验证机制。</li>
+<li>调用功能前验证用户是否有权限调用相关功能。</li>
+</ol>
+<h4 id="身份认证失效"><a href="#身份认证失效" class="headerlink" title="身份认证失效"></a>身份认证失效</h4><p>描述：web 应用中认证和会话的管理有错误，使攻击者获取了其他用户的身份。</p>
+<p>防范：加密，密码检查，失败登录记录。</p>
+<h4 id="敏感数据泄露"><a href="#敏感数据泄露" class="headerlink" title="敏感数据泄露"></a>敏感数据泄露</h4><p>描述：在传输过程中或从客户端窃取密钥、发起中间人攻击，或从服务器端窃取明文数据。</p>
+<p>防范：及时处理敏感信息，加密，禁止缓存响应敏感信息。</p>
+<h4 id="跨站漏洞，XSS跨站脚本攻击、CSRF跨站请求伪造"><a href="#跨站漏洞，XSS跨站脚本攻击、CSRF跨站请求伪造" class="headerlink" title="跨站漏洞，XSS跨站脚本攻击、CSRF跨站请求伪造"></a>跨站漏洞，XSS跨站脚本攻击、CSRF跨站请求伪造</h4><p>XSS：使得攻击者能够在受害者的浏览器中执行脚本，从而劫持会话，或重定向到恶意站点。</p>
+<p>CSRF： 攻击者通过一些技术手段欺骗用户的浏览器去访问一个自己曾经认证过的网站并运行一些操作。简单的身份验证只能保证请求发自某个用户的浏览器，却不能保证请求本身是用户自愿发出的。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/06/06/web%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-spring事务实现银行转账" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>目的：使用spring事务 + mybatis 实现银行转账的业务。</p>
+<p>@Transactional 事务的作用： 保证操作的原子性。</p>
+<ol>
+<li>简单的转账操作分为两个阶段，source 账户转出金额、target 账户转入金额。</li>
+<li>如果source账户转出金额后，程序异常，则会出现source账户扣钱了，而target没有收到钱的问题。</li>
+<li>使用 @Transactional注解可以在转出、转入方法开始前开启事务，方法结束后提交事务，方法异常时回滚事务，从而保障操作的原子性，即要么都完成、要么都不完成。</li>
+<li>使用 i  &#x3D; 1 &#x2F; 0 ；人为制造异常，可以看到事务的作用。</li>
+<li>数据库操作利用 mybatis-plus 实现条件查询后，再进行update。数据库连接使用druid 连接池。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/06/06/spring%E4%BA%8B%E5%8A%A1%E5%AE%9E%E7%8E%B0%E9%93%B6%E8%A1%8C%E8%BD%AC%E8%B4%A6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-spring aop编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Spring-AOP-编程"><a href="#Spring-AOP-编程" class="headerlink" title="Spring AOP 编程"></a>Spring AOP 编程</h4><p>AOP编程关键在于切入点和增强处理，定义好切入点和增强处理的逻辑，AOP框架就自动生成AOP代理。</p>
+<p>Spring AOP编程的三种方式：</p>
+<ol>
+<li>使用 spring 自带的AOP ，实现内部接口，然后xml中配置。</li>
+<li>使用 Aspectj ，在xml中配置。</li>
+<li>使用 Aspectj 注解的实现方式。</li>
+</ol>
+<p>使用Aspectj注解的方式，主要是用 @Aspectj 声明切面类，然后@Component交给Spring容器管理切面类。利用 @Pointcut 定义切入点，然后就可以利用 @Before 、@AfterReturning、@After、@Around、@AfterThrowing注解声明增强处理的方法。</p>
+<p>然后在 xml 中配置一下，使用时先 ApplicationContext 自动扫描 bean 和 Aspectj 配置，随后用 context的代理类执行目标方法。</p>
+<h4 id="Spring-AOP-实现原理"><a href="#Spring-AOP-实现原理" class="headerlink" title="Spring AOP 实现原理"></a>Spring AOP 实现原理</h4><p>两种方式：默认用JDK动态代理，如果目标对象没有实现接口，则用CGLIB代理。</p>
+<p>JDK动态代理利用两个组件：InvocationHandler接口和Proxy类</p>
+<ol>
+<li>实现InvocationHandler接口，并重写invoke()方法，这个方法就是代理方法。</li>
+<li>使用Proxy类的newProxyInstance方法返回代理对象，代理类实现了所有目标类的接口。</li>
+<li>用代理对象调用方法时，底层是通过反射调用了实现的invoke方法。</li>
+</ol>
+<p>CGLIB动态代理：Cglib的实现是在字节码的基础上的，并且使用了开源的ASM读取字节码，对类实现增强功能。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/06/06/spring%20aop%E7%BC%96%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-socket网络编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="socket-编程实现客户端与服务器的通信（多线程-长连接）"><a href="#socket-编程实现客户端与服务器的通信（多线程-长连接）" class="headerlink" title="socket 编程实现客户端与服务器的通信（多线程 + 长连接）"></a>socket 编程实现客户端与服务器的通信（多线程 + 长连接）</h4><p>在Java中，Socket 类可以用于客户端连接服务器，要标记 ip 地址和端口号，如 ip:127.0.0.1，端口号：8080。 ServerSocket 类用于服务器监控客户端连接，可以选择所监控的端口号: 8080。</p>
+<p>多线程的意义：客户端多线程，可以访问多个服务器。服务器多线程，可以同时处理多个客户端。</p>
+<p>长连接的意义：避免传一次消息就连接一次，建立一个具有持续时间的长期连接，在连接的时间范围内可以重复传递消息，降低资源浪费。</p>
+<h5 id="具体实现过程"><a href="#具体实现过程" class="headerlink" title="具体实现过程"></a>具体实现过程</h5><p> 服务端：</p>
+<ol>
+<li>首先要设置 server 监管的 socket 的端口号。</li>
+<li>其次，设置死循环保持长连接，并开启线程处理监听的消息。</li>
+<li>实现 Runnable 接口，重写 run 方法。且新创建的线程由 accept 到的 socket 决定，所以构造器的形参应该为 Socket。</li>
+<li>在 run 方法中，开启 io 流控制。用 reader 读入消息， writer 写出消息返回给客户端。写完后用 flush方法清空缓存，强制输出所有已有的数据。</li>
+<li>读入写出操作由 while 控制，除非读入断开指令，否则不进入 finally 代码段。</li>
+</ol>
+<p>客户端：</p>
+<ol>
+<li>设置socket 连接的 IP地址和端口号。</li>
+<li>设置 键入、读入服务器消息、写出服务器消息。其中读入服务器消息交给线程处理，以便于读入多个服务器的消息。同样要重写 run 方法，且该线程主要用于读数据，所以构造器形参为 reader。</li>
+<li>用 reader 读入消息， writer 写出消息返回给客户端。写完后用 flush方法清空缓存，强制输出所有已有的数据。读入写出操作由 while 控制，除非读入断开指令，否则不进入 finally 代码段。</li>
+</ol>
+<p>具体代码在，LeetCode工程下，CoreCode 模块下的，AMyRealProgram中。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/06/06/socket%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
